@@ -68,7 +68,7 @@ impl Connector for FetchConnector {
 
             reqinit.with_body(body).with_headers(headers);
 
-            worker::console_log!("Start sending...");
+            // worker::console_log!("Start sending...");
 
             let req = worker::Request::new_with_init(&url, &reqinit).map_err(|e| {
                 worker::console_error!("Failed to construct request: {}", e);
@@ -95,7 +95,7 @@ impl Connector for FetchConnector {
                 ErrorKind::from_generic_boxed(boxed)
             })?;
 
-            worker::console_log!("Got body: {}", String::from_utf8_lossy(&body));
+            // worker::console_log!("Got body: {}", String::from_utf8_lossy(&body));
 
             Ok::<HttpResponse, Error>(HttpResponse { body: Some(body) })
         };

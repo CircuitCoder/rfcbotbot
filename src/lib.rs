@@ -68,18 +68,18 @@ pub async fn update_rfc_list(env: Env) -> Result<()> {
         .await?;
     let storage = env.kv("FCP")?;
     for info in fetched {
-        worker::console_log!("Processing: {:#?}", info);
+        // worker::console_log!("Processing: {:#?}", info);
         let mapped: FCPInfo = info.into();
         let id = mapped.id.to_string();
         let saved: Option<FCPStorage> = storage.get(&id).json().await?;
 
-        worker::console_log!("Saved: {:#?}", saved);
+        // worker::console_log!("Saved: {:#?}", saved);
 
         let messages = saved.map(|s| s.messages).unwrap_or_else(HashMap::new);
 
         let (formatted, entities) = msg::format_msg(&mapped);
-        worker::console_log!("Formatted:\n{}", formatted);
-        worker::console_log!("Entities:\n{:#?}", entities);
+        // worker::console_log!("Formatted:\n{}", formatted);
+        // worker::console_log!("Entities:\n{:#?}", entities);
 
         let mut updated = FCPStorage {
             info: mapped,
@@ -107,10 +107,11 @@ pub async fn update_rfc_list(env: Env) -> Result<()> {
                 req.entities(entities.clone());
                 match api.send(req).await {
                     Err(e) => {
-                        worker::console_error!("Error: {}", e);
+                        worker::console_error!("Updating error: {}", e);
                         false
                     }
                     Ok(_) => {
+                        worker::console_error!("Updated");
                         msg.version = updated.info.updated_at;
                         msg.format = msg::MSG_FORMAT;
                         true

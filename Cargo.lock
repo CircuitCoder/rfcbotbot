@@ -775,7 +775,7 @@ dependencies = [
 [[package]]
 name = "telegram-bot"
 version = "0.9.0"
-source = "git+https://github.com/CircuitCoder/telegram-bot?branch=dev#fcd7e684f749511d9e16736037ecf55c8370e8f7"
+source = "git+https://github.com/CircuitCoder/telegram-bot?rev=fcd7e684#fcd7e684f749511d9e16736037ecf55c8370e8f7"
 dependencies = [
  "bytes",
  "futures",
@@ -788,7 +788,7 @@ dependencies = [
 [[package]]
 name = "telegram-bot-raw"
 version = "0.9.0"
-source = "git+https://github.com/CircuitCoder/telegram-bot?branch=dev#fcd7e684f749511d9e16736037ecf55c8370e8f7"
+source = "git+https://github.com/CircuitCoder/telegram-bot?rev=fcd7e684#fcd7e684f749511d9e16736037ecf55c8370e8f7"
 dependencies = [
  "bytes",
  "serde",
