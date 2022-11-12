@@ -1,0 +1,14 @@
+name = "rfcbotbot"
+main = "build/worker/shim.mjs"
+compatibility_date = "2022-01-20"
+
+kv_namespaces = [
+  { binding = "FCP", id = "5074e447d7034211a8ec0d12e8e174b8", preview_id = "5074e447d7034211a8ec0d12e8e174b8" },
+]
+
+[vars]
+WORKERS_RS_VERSION = "0.0.11"
+TARGETS = "@rfcbot_rs"
+
+[build]
+command = "cargo install -q worker-build --version 0.0.7 && worker-build --release"
